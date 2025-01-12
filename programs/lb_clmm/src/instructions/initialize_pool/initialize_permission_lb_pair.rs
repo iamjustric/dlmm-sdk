@@ -31,16 +31,16 @@ pub struct InitializePermissionLbPair<'info> {
     pub base: Signer<'info>,
 
     #[account(
-        init,
-        seeds = [
-            base.key().as_ref(),
-            min(token_mint_x.key(), token_mint_y.key()).as_ref(),
-            max(token_mint_x.key(), token_mint_y.key()).as_ref(),
-            &ix_data.bin_step.to_le_bytes(),
-        ],
-        bump,
-        payer = admin,
-        space = 8 + LbPair::INIT_SPACE
+    init,
+    seeds = [
+        base.key().as_ref(),
+        min(token_mint_x.key().as_ref(), token_mint_y.key().as_ref()),
+        max(token_mint_x.key().as_ref(), token_mint_y.key().as_ref()),
+        &ix_data.bin_step.to_le_bytes(),
+    ],
+    bump,
+    payer = admin,
+    space = 8 + LbPair::INIT_SPACE
     )]
     pub lb_pair: AccountLoader<'info, LbPair>,
 
@@ -61,27 +61,28 @@ pub struct InitializePermissionLbPair<'info> {
     pub token_mint_y: Box<InterfaceAccount<'info, Mint>>,
 
     #[account(
-        init,
-        seeds = [
-            lb_pair.key().as_ref(),
-            token_mint_x.key().as_ref()
-        ],
-        bump,
-        payer = admin,
-        token::mint = token_mint_x,
-        token::authority = lb_pair,
+    init,
+    seeds = [
+        lb_pair.key().as_ref(),
+        token_mint_x.key().as_ref()
+    ],
+    bump,
+    payer = admin,
+    token::mint = token_mint_x,
+    token::authority = lb_pair,
     )]
     pub reserve_x: Box<InterfaceAccount<'info, TokenAccount>>,
+
     #[account(
-        init,
-        seeds = [
-            lb_pair.key().as_ref(),
-            token_mint_y.key().as_ref()
-        ],
-        bump,
-        payer = admin,
-        token::mint = token_mint_y,
-        token::authority = lb_pair,
+    init,
+    seeds = [
+        lb_pair.key().as_ref(),
+        token_mint_y.key().as_ref()
+    ],
+    bump,
+    payer = admin,
+    token::mint = token_mint_y,
+    token::authority = lb_pair,
     )]
     pub reserve_y: Box<InterfaceAccount<'info, TokenAccount>>,
 

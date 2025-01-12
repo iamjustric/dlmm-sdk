@@ -39,6 +39,9 @@ declare_id!("LbVRzDTvBDEcrthxfZ4RL6yiq3uZw8bS6MwtdY6UhFQ");
 #[cfg(feature = "staging")]
 declare_id!("tLBro6JJuZNnpoad3p8pXKohE9f7f7tBZJpaeh6pXt1");
 
+#[cfg(feature = "devnet")]
+declare_id!("DxgHjFtwEJkbXYc1xkLnVzkFCdaPQhiY5oBrainGNYu7");
+
 #[cfg(not(any(feature = "localnet", feature = "staging")))]
 declare_id!("LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo");
 

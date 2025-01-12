@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="EMPTY_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/cli/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/commons/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/market_making/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/programs/lb_clmm/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/programs/lb_clmm/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

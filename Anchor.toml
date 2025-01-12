@@ -5,12 +5,15 @@ skip-lint = false
 [programs.localnet]
 lb_clmm = { address = "GrAkKfEpTKQuVHG2Y97Y2FF4i7y7Q5AHLK94JBy7Y5yv", idl = "target/idl/id.json" }
 
+[programs.devnet]
+lb_clmm = { address = "DxgHjFtwEJkbXYc1xkLnVzkFCdaPQhiY5oBrainGNYu7", idl = "target/idl/id.json" }
+
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
-wallet = "keys/localnet/admin-bossj3JvwiNK7pvjr149DqdtJxf2gdygbcmEPTkb2F1.json"
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
 
 [[test.genesis]]
 address = "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
@@ -29,4 +32,4 @@ deploy-local = "solana program deploy target/deploy/lb_clmm.so --keypair keys/lo
 startup_wait = 50000
 
 [toolchain]
-anchor_version = "0.28.0"
+anchor_version = "0.30.1"

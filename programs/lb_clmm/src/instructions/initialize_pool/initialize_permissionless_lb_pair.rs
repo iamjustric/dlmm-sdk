@@ -15,28 +15,28 @@ use std::cmp::{max, min};
 #[instruction(active_id: i32, bin_step: u16)]
 pub struct InitializeLbPair<'info> {
     #[account(
-        init,
-        seeds = [
-            min(token_mint_x.key(), token_mint_y.key()).as_ref(),
-            max(token_mint_x.key(), token_mint_y.key()).as_ref(),
-            &bin_step.to_le_bytes(),
-            &preset_parameter.base_factor.to_le_bytes()
-        ],
-        bump,
-        payer = funder,
-        space = 8 + LbPair::INIT_SPACE
+    init,
+    seeds = [
+        min(token_mint_x.key().as_ref(), token_mint_y.key().as_ref()),
+        max(token_mint_x.key().as_ref(), token_mint_y.key().as_ref()),
+        &bin_step.to_le_bytes(),
+        &preset_parameter.base_factor.to_le_bytes()
+    ],
+    bump,
+    payer = funder,
+    space = 8 + LbPair::INIT_SPACE
     )]
     pub lb_pair: AccountLoader<'info, LbPair>,
 
     #[account(
-        init,
-        seeds = [
-            BIN_ARRAY_BITMAP_SEED,
-            lb_pair.key().as_ref(),
-        ],
-        bump,
-        payer = funder,
-        space = 8 + BinArrayBitmapExtension::INIT_SPACE
+    init,
+    seeds = [
+        BIN_ARRAY_BITMAP_SEED,
+        lb_pair.key().as_ref(),
+    ],
+    bump,
+    payer = funder,
+    space = 8 + BinArrayBitmapExtension::INIT_SPACE
     )]
     pub bin_array_bitmap_extension: Option<AccountLoader<'info, BinArrayBitmapExtension>>,
 
@@ -45,27 +45,28 @@ pub struct InitializeLbPair<'info> {
     pub token_mint_y: Box<InterfaceAccount<'info, Mint>>,
 
     #[account(
-        init,
-        seeds = [
-            lb_pair.key().as_ref(),
-            token_mint_x.key().as_ref()
-        ],
-        bump,
-        payer = funder,
-        token::mint = token_mint_x,
-        token::authority = lb_pair,
+    init,
+    seeds = [
+        lb_pair.key().as_ref(),
+        token_mint_x.key().as_ref()
+    ],
+    bump,
+    payer = funder,
+    token::mint = token_mint_x,
+    token::authority = lb_pair,
     )]
     pub reserve_x: Box<InterfaceAccount<'info, TokenAccount>>,
+
     #[account(
-        init,
-        seeds = [
-            lb_pair.key().as_ref(),
-            token_mint_y.key().as_ref()
-        ],
-        bump,
-        payer = funder,
-        token::mint = token_mint_y,
-        token::authority = lb_pair,
+    init,
+    seeds = [
+        lb_pair.key().as_ref(),
+        token_mint_y.key().as_ref()
+    ],
+    bump,
+    payer = funder,
+    token::mint = token_mint_y,
+    token::authority = lb_pair,
     )]
     pub reserve_y: Box<InterfaceAccount<'info, TokenAccount>>,
 
