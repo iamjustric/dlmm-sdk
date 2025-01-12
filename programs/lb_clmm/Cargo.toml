@@ -1,12 +1,12 @@
 [package]
-name = "lb_clmm"
+name = "dlmm"
 version = "0.8.2"
 description = "Created with Anchor"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "lb_clmm"
+name = "dlmm"
 
 [features]
 no-entrypoint = []
